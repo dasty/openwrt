@@ -1,6 +1,20 @@
 include ./common-tp-link.mk
 
 
+define Device/re450-v1
+  $(Device/tplink-safeloader)
+  DEVICE_TITLE := TP-LINK RE450 v1
+  DEVICE_PACKAGES := kmod-ath10k-ct ath10k-firmware-qca988x-ct
+  MTDPARTS := spi0.0:128k(u-boot)ro,6016k(firmware),64k(partition-table)ro,64k(product-info)ro,1856k(config)ro,64k(art)ro
+  IMAGE_SIZE := 7936k
+  BOARDNAME := RE450
+  TPLINK_BOARD_ID := RE450
+  DEVICE_PROFILE := RE450
+  TPLINK_HWID := 0x0
+  TPLINK_HWREV := 0
+endef
+TARGET_DEVICES += re450-v1
+
 define Device/tl-mr10u-v1
   $(Device/tplink-4mlzma)
   DEVICE_TITLE := TP-LINK TL-MR10U v1
